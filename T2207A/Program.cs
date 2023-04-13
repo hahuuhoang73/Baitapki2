@@ -48,15 +48,44 @@ public class Program
 
         //Bai toan phan so
         Phanso ps = new Phanso();
-        
         ps.Nhap();
-        ps.Rutgonphanso();
+        Console.WriteLine("Phan so vua nhap la:");
         ps.Hienthi();
-        ps.Ngichdaophanso();
-        ps.Hienthi();
-        //p[hung bbu an cut choaefwkfgbkargaeqwrttghrydrtyyyyyyyyyyy
+        Console.WriteLine("Hay nhap phan so muon thuc hienj phep toan:");
+        Phanso psnew = new Phanso();
+        psnew.Nhap();
+
+        //Giai quyet bai toan 
+        Console.WriteLine("tONG HAI PHAN SO LA");
+        Phanso tong = ps.Cong(psnew);
+        tong.Rutgonphanso();
+        tong.Hienthi();
+
+        Console.WriteLine("TRU HAI PHAN SO LA");
+        Phanso tru = ps.Tru(psnew);
+        tru.Rutgonphanso();
+        tru.Hienthi();
+
+        Console.WriteLine("NHAN HAI PHAN SO LA");
+        Phanso nhan = ps.Nhan(psnew);
+        nhan.Rutgonphanso();
+        nhan.Hienthi();
+
+        Console.WriteLine("CHIA HAI PHAN SO LA");
+        Phanso chia = ps.Cong(psnew);
+        chia.Rutgonphanso();
+        chia.Hienthi();
+
+
+
+
+
+
+
+
 
 
     }
+   
    
 }
