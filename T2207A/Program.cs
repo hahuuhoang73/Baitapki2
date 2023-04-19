@@ -78,11 +78,19 @@ public class Program
         //chia.Rutgonphanso();
         //chia.Hienthi();
 
-        Vietnam vn = new Vietnam("K123","Ha Huu Hoang", new DateTime(2023, 4, 14), "kinh doanh",61,50);
-        
-        vn.Hienthi();
 
 
+
+        //  Vietnam vn = new Vietnam("K123","Ha Huu Hoang", new DateTime(2023, 4, 14), "kinh doanh",61,50);
+
+        // vn.Hienthi();
+        Phone phonebook = new PhoneBoock();
+        phonebook.insertPhone("John", "123456789");
+        phonebook.insertPhone("Jane", "987654321");
+        phonebook.SearchPhone("John");
+        phonebook.UpdatePhone("Jane", "111111111");
+        phonebook.RemovePhone("John");
+        phonebook.Sort();
 
 
 
