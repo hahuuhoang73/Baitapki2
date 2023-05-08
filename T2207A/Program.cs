@@ -5,106 +5,83 @@ public class Program
 {
     public static void Main(String[] args)
     {
-        // Console.WriteLine("Hello World");
-        // int x = 10;
-        // string s = "T2207a";
-        // double pi = 3.14159;
-        // if (x > 5)
-        // {
-        //     x--;
-        // }
-        //  else
-        //  {
-        //    x++;
-        //  }
-        // int[] arr = new int[5];
-        //  arr[0] = 1;
-        //  arr[1] = 56;
-        //  arr[2] = 12;
-        //  arr[3] = 2;
-        // arr[4] = 4;
+        int choice = 0;
+        do
+        {
+            Console.WriteLine("1. Add product records");
+            Console.WriteLine("2. Display product records");
+            Console.WriteLine("3. Delete product by Id");
+            Console.WriteLine("4. Exit");
+            Console.Write("Enter your choice: ");
+            choice = int.Parse(Console.ReadLine());
+            switch (choice)
+            {
+                case 1:
+                    AddProduct();
+                    break;
+                case 2:
+                    DisplayProducts();
+                    break;
+                case 3:
+                   DeleteProduct();
+                    break;
+                case 4:
+                    Console.WriteLine("Exiting...");
+                    break;
+                default:
+                    Console.WriteLine("Invalid choice");
+                    break;
+            }
 
-        // foreach( int i in arr)
-        // {
-        //     Console.WriteLine(i);
-        // }
-        //  Console.WriteLine("Vui long nhap");
-        //  String cmd = Console.ReadLine();
-        //  Console.WriteLine("Chuoi vua nhap: " + cmd);
-
-        //  Console.WriteLine("vui long nhap so can kiem tra");
-        //  String cmd2 = Console.ReadLine();
-        // int n = Convert.ToInt32(cmd2);
-        //  if (isPrimed(n))
-        // {
-        //     Console.WriteLine(n + "la SNT");
-        //  }
-
-        //  List<int> ints = new List<int>();
-        // Class1 cl = new Class1();
-        //  cl.Run();
-        //  cl.Learn();
-        // cl.Learnn("abc");
-        //cl.Name = "Nguyen van an";
-
-
-        //Bai toan phan so
-        //Phanso ps = new Phanso();
-        //ps.Nhap();
-        //Console.WriteLine("Phan so vua nhap la:");
-        //ps.Hienthi();
-        //Console.WriteLine("Hay nhap phan so muon thuc hienj phep toan:");
-        //Phanso psnew = new Phanso();
-        //psnew.Nhap();
-
-        //Giai quyet bai toan 
-        //Console.WriteLine("tONG HAI PHAN SO LA");
-        //Phanso tong = ps.Cong(psnew);
-        //tong.Rutgonphanso();
-        //tong.Hienthi();
-
-        //Console.WriteLine("TRU HAI PHAN SO LA");
-        //Phanso tru = ps.Tru(psnew);
-        //tru.Rutgonphanso();
-        //tru.Hienthi();
-
-        //Console.WriteLine("NHAN HAI PHAN SO LA");
-        //Phanso nhan = ps.Nhan(psnew);
-        //nhan.Rutgonphanso();
-        //nhan.Hienthi();
-
-        //Console.WriteLine("CHIA HAI PHAN SO LA");
-        //Phanso chia = ps.Cong(psnew);
-        //chia.Rutgonphanso();
-        //chia.Hienthi();
-
-
-
-
-        //  Vietnam vn = new Vietnam("K123","Ha Huu Hoang", new DateTime(2023, 4, 14), "kinh doanh",61,50);
-
-        // vn.Hienthi();
-        //Phone phonebook = new PhoneBoock();
-        //phonebook.insertPhone("John", "123456789");
-        //phonebook.insertPhone("Jane", "987654321");
-        //phonebook.SearchPhone("John");
-        //phonebook.UpdatePhone("Jane", "111111111");
-        //phonebook.RemovePhone("John");
-        //phonebook.Sort();
-
-
-        News news = new News();
-        news.Id = 1;
-        news.Title = "Elizabeth";
-        news.PublishDate = "21-04-2023";
-        news.Author = "Ha Huu Hoang";
-        news.Content = "This is an example news.";
-        int[] rateList = { 3, 4, 5 };
-        news.Calculate(rateList);
-        news.Display();
-
+            Console.WriteLine();
+        } while (choice != 4);
 
     }
-   
-   
+    static List<Product> products = new List<Product>();
+    public static void AddProduct()
+    {
+        Console.Write("Enter product ID: ");
+        string id = Console.ReadLine();
+
+        Console.Write("Enter product name: ");
+        string name = Console.ReadLine();
+
+        Console.Write("Enter product price: ");
+        decimal price = decimal.Parse(Console.ReadLine());
+
+        Product product = new Product { Id = id, Name = name, Price = price };
+        products.Add(product);
+        Console.WriteLine("Product added successfully");
+    }
+    public static void DisplayProducts()
+    {
+        if (products.Count == 0)
+        {
+            Console.WriteLine("There are no products in the list");
+        }
+        else {
+            Console.WriteLine("{0,-10} {1,-20} {2,-10}", "ID", "Name", "Price");
+            foreach (Product product in products)
+            {
+                Console.WriteLine("{0,-10} {1,-20} {2,-10}", product.Id, product.Name, "$" + product.Price);
+            }
+        }
+        
+    }
+   public static void DeleteProduct()
+    {
+        Console.Write("Enter product ID to delete: ");
+        string id = Console.ReadLine();
+
+        Product product = products.Find(p => p.Id == id);
+        if (product != null)
+        {
+            products.Remove(product);
+            Console.WriteLine("Product deleted successfully");
+        }
+        else
+        {
+            Console.WriteLine("Product not found");
+        }
+    }
 }
